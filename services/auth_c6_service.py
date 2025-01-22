@@ -13,7 +13,8 @@ def get_c6_access_token():
         response = requests.post(
             C6_AUTH_URL,
             data=C6_CREDENTIALS,
-            verify=False  # Ajustar para True em produção
+            cert=(CERTS["client_cert"], CERTS["client_key"]),
+            verify=True  # Certifique-se de que verify esteja como True
         )
 
         if response.status_code == 200:
@@ -23,6 +24,7 @@ def get_c6_access_token():
             return token
         else:
             logging.error(f"Erro ao obter token do C6: {response.text}")
+            logging.error(f"Status code: {response.status_code}") # Adicione para melhor debug
             raise Exception("Falha na autenticação do C6")
 
     except requests.exceptions.RequestException as e:
@@ -47,7 +49,7 @@ def send_to_c6(data):
             json=data,
             headers=headers,
             cert=(CERTS["client_cert"], CERTS["client_key"]),
-            verify=False  # Ajustar para True em produção
+            verify=True  # Ajustar para True em produção
         )
 
         if response.status_code in [200, 201]:
@@ -62,6 +64,9 @@ def send_to_c6(data):
             logging.error(f"Erro na API do C6: {response.text}")
             raise Exception(f"Erro ao gerar boleto: {response.text}")
 
+    except requests.exceptions.SSLError as e:
+        logging.error(f"Erro de certificado SSL: {e}")
+        raise
     except requests.exceptions.RequestException as e:
         logging.error(f"Erro na requisição ao C6: {e}")
         raise
@@ -79,7 +84,7 @@ def consult_boleto(boleto_id, token):
             url,
             headers=headers,
             cert=(CERTS["client_cert"], CERTS["client_key"]),
-            verify=False  # Ajustar para True em produção
+            verify=True  # Ajustar para True em produção
         )
 
         if response.status_code == 200:

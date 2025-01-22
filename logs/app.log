@@ -36,3 +36,179 @@
 2025-01-22 11:38:18,146 [ERROR] Erro na requisição ao C6: HTTPSConnectionPool(host='api.c6bank.com.br', port=443): Max retries exceeded with url: /oauth/token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019BDA252150>: Failed to resolve 'api.c6bank.com.br' ([Errno 11001] getaddrinfo failed)"))
 2025-01-22 11:38:18,147 [ERROR] Erro no processamento: HTTPSConnectionPool(host='api.c6bank.com.br', port=443): Max retries exceeded with url: /oauth/token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000019BDA252150>: Failed to resolve 'api.c6bank.com.br' ([Errno 11001] getaddrinfo failed)"))
 2025-01-22 11:38:18,148 [INFO] 127.0.0.1 - - [22/Jan/2025 11:38:18] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 11:56:53,556 [INFO]  * Detected change in 'C:\\Users\\leonardo\\Desktop\\Integração C6 Bank\\config\\config.py', reloading
+2025-01-22 11:56:54,607 [INFO]  * Restarting with stat
+2025-01-22 11:57:02,829 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 11:57:02,831 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 11:57:02,835 [INFO]  * Restarting with stat
+2025-01-22 11:57:05,146 [WARNING]  * Debugger is active!
+2025-01-22 11:57:05,156 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 11:57:18,563 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 11:57:18,781 [ERROR] Erro ao obter token do C6: {
+    "type": "https://developers.c6bank.com.br/v1/error/mtls_error",
+    "title": "Erro na autenticação mTLS.",
+    "status": 403,
+    "detail": "Consulte a documentação."
+}
+2025-01-22 11:57:18,783 [ERROR] Erro no processamento: Falha na autenticação do C6
+2025-01-22 11:57:18,783 [INFO] 127.0.0.1 - - [22/Jan/2025 11:57:18] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:01:58,898 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:01:58,899 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:01:58,902 [INFO]  * Restarting with stat
+2025-01-22 12:02:01,174 [WARNING]  * Debugger is active!
+2025-01-22 12:02:01,184 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:02:06,038 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:02:06,187 [ERROR] Erro ao obter token do C6: {
+    "type": "https://developers.c6bank.com.br/v1/error/mtls_error",
+    "title": "Erro na autenticação mTLS.",
+    "status": 403,
+    "detail": "Consulte a documentação."
+}
+2025-01-22 12:02:06,188 [ERROR] Erro no processamento: Falha na autenticação do C6
+2025-01-22 12:02:06,189 [INFO] 127.0.0.1 - - [22/Jan/2025 12:02:06] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:05:02,136 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:05:02,136 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:05:02,139 [INFO]  * Restarting with stat
+2025-01-22 12:05:04,537 [WARNING]  * Debugger is active!
+2025-01-22 12:05:04,545 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:05:10,435 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:05:10,587 [ERROR] Erro ao obter token do C6: {
+    "type": "https://developers.c6bank.com.br/v1/error/mtls_error",
+    "title": "Erro na autenticação mTLS.",
+    "status": 403,
+    "detail": "Consulte a documentação."
+}
+2025-01-22 12:05:10,588 [ERROR] Erro no processamento: Falha na autenticação do C6
+2025-01-22 12:05:10,588 [INFO] 127.0.0.1 - - [22/Jan/2025 12:05:10] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:09:01,884 [INFO]  * Detected change in 'C:\\Users\\leonardo\\Desktop\\Integração C6 Bank\\services\\auth_c6_service.py', reloading
+2025-01-22 12:09:09,513 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:09:09,514 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:09:09,517 [INFO]  * Restarting with stat
+2025-01-22 12:09:11,712 [WARNING]  * Debugger is active!
+2025-01-22 12:09:11,723 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:09:15,955 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:09:16,076 [ERROR] Erro ao obter token do C6: {
+    "type": "https://developers.c6bank.com.br/v1/error/mtls_error",
+    "title": "Erro na autenticação mTLS.",
+    "status": 403,
+    "detail": "Consulte a documentação."
+}
+2025-01-22 12:09:16,077 [ERROR] Erro no processamento: Falha na autenticação do C6
+2025-01-22 12:09:16,078 [INFO] 127.0.0.1 - - [22/Jan/2025 12:09:16] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:11:00,186 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:11:00,188 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:11:00,191 [INFO]  * Restarting with stat
+2025-01-22 12:11:02,677 [WARNING]  * Debugger is active!
+2025-01-22 12:11:02,693 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:11:05,757 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:11:06,250 [ERROR] Erro ao obter token do C6: {
+    "type": "https://developers.c6bank.com.br/v1/error/mtls_error",
+    "title": "Erro na autenticação mTLS.",
+    "status": 403,
+    "detail": "Consulte a documentação."
+}
+2025-01-22 12:11:06,251 [ERROR] Erro no processamento: Falha na autenticação do C6
+2025-01-22 12:11:06,251 [INFO] 127.0.0.1 - - [22/Jan/2025 12:11:06] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:12:56,702 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:12:56,703 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:12:56,706 [INFO]  * Restarting with stat
+2025-01-22 12:12:58,990 [WARNING]  * Debugger is active!
+2025-01-22 12:12:59,000 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:13:04,122 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:13:04,250 [ERROR] Erro ao obter token do C6: {
+    "type": "https://developers.c6bank.com.br/v1/error/mtls_error",
+    "title": "Erro na autenticação mTLS.",
+    "status": 403,
+    "detail": "Consulte a documentação."
+}
+2025-01-22 12:13:04,251 [ERROR] Erro no processamento: Falha na autenticação do C6
+2025-01-22 12:13:04,252 [INFO] 127.0.0.1 - - [22/Jan/2025 12:13:04] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:17:25,969 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:17:25,969 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:17:25,972 [INFO]  * Restarting with stat
+2025-01-22 12:17:28,430 [WARNING]  * Debugger is active!
+2025-01-22 12:17:28,438 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:17:37,378 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:17:37,551 [ERROR] Erro ao obter token do C6: {
+    "type": "https://developers.c6bank.com.br/v1/error/mtls_error",
+    "title": "Erro na autenticação mTLS.",
+    "status": 403,
+    "detail": "Consulte a documentação."
+}
+2025-01-22 12:17:37,554 [ERROR] Erro no processamento: Falha na autenticação do C6
+2025-01-22 12:17:37,555 [INFO] 127.0.0.1 - - [22/Jan/2025 12:17:37] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:19:13,438 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:19:13,438 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:19:13,441 [INFO]  * Restarting with stat
+2025-01-22 12:19:15,819 [WARNING]  * Debugger is active!
+2025-01-22 12:19:15,828 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:19:18,866 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:19:18,987 [ERROR] Erro ao obter token do C6: {
+    "type": "https://developers.c6bank.com.br/v1/error/mtls_error",
+    "title": "Erro na autenticação mTLS.",
+    "status": 403,
+    "detail": "Consulte a documentação."
+}
+2025-01-22 12:19:18,988 [ERROR] Erro no processamento: Falha na autenticação do C6
+2025-01-22 12:19:18,989 [INFO] 127.0.0.1 - - [22/Jan/2025 12:19:18] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:20:48,701 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:20:48,704 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:20:48,708 [INFO]  * Restarting with stat
+2025-01-22 12:20:51,450 [WARNING]  * Debugger is active!
+2025-01-22 12:20:51,463 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:20:53,332 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:20:53,339 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\Integração C6 Bank\config\certs\cert.crt
+2025-01-22 12:20:53,340 [INFO] 127.0.0.1 - - [22/Jan/2025 12:20:53] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:22:18,130 [INFO]  * Detected change in 'C:\\Users\\leonardo\\Desktop\\Integração C6 Bank\\services\\auth_c6_service.py', reloading
+2025-01-22 12:22:21,149 [INFO]  * Restarting with stat
+2025-01-22 12:22:27,210 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:22:27,210 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:22:27,213 [INFO]  * Restarting with stat
+2025-01-22 12:22:29,481 [WARNING]  * Debugger is active!
+2025-01-22 12:22:29,493 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:22:34,836 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:22:34,844 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\Integração C6 Bank\config\certs\cert.crt
+2025-01-22 12:22:34,845 [INFO] 127.0.0.1 - - [22/Jan/2025 12:22:34] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-22 12:24:16,249 [INFO]  * Detected change in 'C:\\Users\\leonardo\\Desktop\\Integração C6 Bank\\config\\config.py', reloading
+2025-01-22 12:24:18,492 [INFO]  * Restarting with stat
+2025-01-22 12:24:25,714 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.4:5000
+2025-01-22 12:24:25,715 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-22 12:24:25,717 [INFO]  * Restarting with stat
+2025-01-22 12:24:28,026 [WARNING]  * Debugger is active!
+2025-01-22 12:24:28,036 [INFO]  * Debugger PIN: 646-228-176
+2025-01-22 12:25:09,589 [INFO] Recebido JSON do Zoho: {'external_reference_id': '0000107047', 'invoice_id': '5950246000000107047', 'amount': '10.0', 'due_date': '2025-01-20', 'instructions': '', 'payer': {'name': 'Leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'José Pereira Liberato', 'number': '3350', 'complement': '', 'city': 'Itajai', 'state': 'SC', 'zip_code': '88303401'}}}
+2025-01-22 12:25:09,597 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\Integração C6 Bank\config\certs\cert.crt
+2025-01-22 12:25:09,599 [INFO] 127.0.0.1 - - [22/Jan/2025 12:25:09] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -

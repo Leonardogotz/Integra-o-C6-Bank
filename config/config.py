@@ -1,8 +1,9 @@
 import os
+import pathlib
 
 # Configuração da API do C6
-C6_API_URL = "https://api.c6bank.com.br/seu-endpoint"
-C6_AUTH_URL = "https://api.c6bank.com.br/oauth/token"
+C6_API_URL = "https://baas-api-sandbox.c6bank.info/v1/bank_slips/"
+C6_AUTH_URL = "https://baas-api-sandbox.c6bank.info/v1/auth/"
 
 C6_CREDENTIALS = {
     "client_id": os.getenv("C6_CLIENT_ID", "ede8508d-c937-49b6-8949-1aeb3e60dcb9"),
@@ -22,10 +23,12 @@ ZOHO_CREDENTIALS = {
 }
 
 # Certificados SSL/TLS para C6 Bank (Sem CA Cert)
+BASE_DIR = pathlib.Path(__file__).parent.resolve() # Pega o diretório do arquivo config.py
 CERTS = {
-    "client_cert": "certs/cert.crt",
-    "client_key": "certs/cert.key"
+    "client_cert": str(BASE_DIR / "certs/cert.crt"),
+    "client_key": str(BASE_DIR / "certs/cert.key")
 }
+print(f"Caminho do certificado: {CERTS['client_cert']}")
 
 # Configuração de logging
 LOG_FILE = "logs/app.log"
