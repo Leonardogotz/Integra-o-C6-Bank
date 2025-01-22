@@ -1,5 +1,4 @@
-flask
-requests
-gunicorn
-
+Flask==2.3.2  # ou a versão que você usa
+requests==2.31.0 # ou a versão que você usa
+gunicorn==21.2.0 # ou a versão que você usa
 
