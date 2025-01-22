@@ -35,7 +35,7 @@ def get_zoho_access_token():
         raise
 
 
-def upload_attachment_to_zoho(invoice_id, file_path, access_token):
+def upload_attachment_to_zoho(invoice_id, file_path, access_token, boleto_id):
     """Faz o upload de um anexo (PDF) para uma fatura no Zoho Books."""
     try:
         url = f"{ZOHO_API_URL}/invoices/{invoice_id}/attachment"
@@ -54,3 +54,25 @@ def upload_attachment_to_zoho(invoice_id, file_path, access_token):
     except requests.exceptions.RequestException as e:
         logging.error(f"Erro no upload para o Zoho: {e}")
         raise
+
+    # Atualiza a invoice no Zoho Books com o ID do boleto
+    update_url = f"{ZOHO_API_URL}/invoices/{invoice_id}"
+    headers = {
+        "Authorization": f"Zoho-oauthtoken {access_token}",
+        "Content-Type": "application/json"
+    }
+    update_data = {
+        "custom_fields": [
+            {
+                "api_name": "cf_boleto_id",
+                "value": boleto_id
+            }
+        ]
+    }
+    update_response = requests.put(update_url, headers=headers, json=update_data)
+
+    if update_response.status_code not in [200, 204]:
+        logging.error(f"Erro ao atualizar invoice no Zoho: {update_response.text}")
+        raise Exception(f"Falha ao atualizar invoice: {update_response.text}")
+
+    logging.info(f"Invoice {invoice_id} atualizada com boleto_id: {boleto_id}")

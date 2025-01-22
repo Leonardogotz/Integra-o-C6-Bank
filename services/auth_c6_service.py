@@ -1,6 +1,7 @@
 import requests
 import logging
 import base64
+import os
 from config.config import C6_API_URL, C6_AUTH_URL, C6_CREDENTIALS, CERTS
 
 # Cache para token de acesso
@@ -99,15 +100,14 @@ def consult_boleto(boleto_id, token):
         logging.error(f"Erro ao consultar boleto no C6: {e}")
         raise
 
-
-def decode_boleto_pdf(base64_pdf):
-    """Decodifica o PDF em Base64 e salva como arquivo temporário."""
+def decode_boleto_pdf(base64_pdf, pdf_path):
+    """Decodifica o PDF em Base64 e salva no caminho especificado."""
     try:
-        pdf_path = "temp_files/boleto.pdf"
+        decoded_pdf = base64.b64decode(base64_pdf)
         with open(pdf_path, "wb") as pdf_file:
-            pdf_file.write(base64.b64decode(base64_pdf))
-        logging.info(f"PDF do boleto salvo temporariamente em {pdf_path}.")
+            pdf_file.write(decoded_pdf)
+        logging.info(f"PDF do boleto salvo em {pdf_path}.")
         return pdf_path
     except Exception as e:
-        logging.error(f"Erro ao decodificar e salvar o PDF: {e}")
+        logging.exception(f"Erro ao decodificar e salvar o PDF: {e}")
         raise
