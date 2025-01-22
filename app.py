@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import logging
 from services.auth_c6_service import send_to_c6, decode_boleto_pdf
 from services.auth_zoho_service import get_zoho_access_token, upload_attachment_to_zoho
+import os
+import pathlib
 
 app = Flask(__name__)
 
@@ -17,35 +19,69 @@ logging.basicConfig(
 
 @app.route('/zoho-webhook', methods=['POST'])
 def receive_zoho_data():
-    """Recebe dados do Zoho, gera boleto no C6 e anexa o PDF ao Zoho."""
+    temp_dir = pathlib.Path("temp_files")
+    temp_dir.mkdir(parents=True, exist_ok=True)
+    
     try:
-        # Recebe o JSON enviado pelo Zoho
         data = request.get_json()
         if not data:
             return jsonify({"error": "Invalid JSON"}), 400
 
         logging.info(f"Recebido JSON do Zoho: {data}")
 
-        # Montar o JSON para a API do C6 com base nos dados do Zoho
-        boleto_data = {
-            "external_reference_id": data.get("external_reference_id"),
-            "amount": data.get("amount"),
-            "due_date": data.get("due_date"),
-            "instructions": [data.get("instructions")],
-            "payer": {
-                "name": data.get("name"),
-                "tax_id": data.get("tax_id"),
-                "email": data.get("email"),
-                "address": {
-                    "street": data.get("address", {}).get("street"),
-                    "number": data.get("address", {}).get("number"),
-                    "complement": data.get("address", {}).get("complement"),
-                    "city": data.get("address", {}).get("city"),
-                    "state": data.get("address", {}).get("state"),
-                    "zip_code": data.get("address", {}).get("zip_code"),
+        # Validação e tratamento de dados do Zoho - MELHORADO
+        try:
+            boleto_data = {
+                "external_reference_id": data["external_reference_id"],
+                "amount": float(data["amount"]),
+                "due_date": data["due_date"],
+                "instructions": [str(ins) for ins in data.get("instructions", [])], # Lista de strings
+                "payer": {
+                    "name": data["payer"]["name"],
+                    "tax_id": data["payer"]["tax_id"],
+                    "email": data["payer"]["email"],
+                    "address": {
+                        "street": data["payer"]["address"]["street"],
+                        "number": int(data["payer"]["address"]["number"]),
+                        "complement": data["payer"]["address"]["complement"],
+                        "city": data["payer"]["address"]["city"],
+                        "state": data["payer"]["address"]["state"],
+                        "zip_code": data["payer"]["address"]["zip_code"],
+                    }
                 }
             }
-        }
+
+            # Verificação de campos obrigatórios (adicione mais conforme necessário)
+            required_fields = ["external_reference_id", "amount", "due_date", "payer", "payer.name", "payer.tax_id", "payer.email", "payer.address"]
+            for field in required_fields:
+                if "." in field:
+                    nested_fields = field.split(".")
+                    current_level = data
+                    for f in nested_fields:
+                        if f not in current_level:
+                            raise ValueError(f"Campo obrigatório '{field}' está faltando.")
+                        current_level = current_level[f]
+                    if not current_level:
+                        raise ValueError(f"Campo obrigatório '{field}' está vazio.")
+                else:
+                    if field not in data or not data[field]:
+                        raise ValueError(f"Campo obrigatório '{field}' está faltando ou vazio.")
+
+            # Verificação de tipos de dados (adicione mais conforme necessário)
+            if not isinstance(boleto_data["amount"], (int, float)):
+                raise ValueError("O campo 'amount' deve ser um número.")
+            if not isinstance(boleto_data["payer"]["address"]["number"], int):
+                raise ValueError("O campo 'payer.address.number' deve ser um número inteiro.")
+            if not isinstance(boleto_data["instructions"], list):
+                raise ValueError("O campo 'instructions' deve ser uma lista.")
+            for instruction in boleto_data["instructions"]:
+                if not isinstance(instruction, str):
+                    raise ValueError("Todos os itens em 'instructions' devem ser strings.")
+
+
+        except (KeyError, ValueError) as e:
+            logging.error(f"Dados inválidos do Zoho: {e}")
+            return jsonify({"error": f"Dados inválidos do Zoho: {e}"}), 400
 
         # Gera o boleto no C6 (inclui emissão e consulta)
         boleto_response = send_to_c6(boleto_data)

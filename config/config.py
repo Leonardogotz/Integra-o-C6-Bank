@@ -12,7 +12,7 @@ C6_CREDENTIALS = {
 }
 
 # Configuração da API Zoho
-ZOHO_API_URL = "https://www.zohoapis.com/crm/v2/"
+ZOHO_API_URL = "https://www.zohoapis.com/books/v3/"
 ZOHO_AUTH_URL = "https://accounts.zoho.com/oauth/v2/token"
 
 ZOHO_CREDENTIALS = {
@@ -23,10 +23,13 @@ ZOHO_CREDENTIALS = {
 }
 
 # Certificados SSL/TLS para C6 Bank (Sem CA Cert)
-BASE_DIR = pathlib.Path(__file__).parent.resolve() # Pega o diretório do arquivo config.py
+BASE_DIR = pathlib.Path(__file__).parent.resolve()
+# Sobe um nível no diretório para encontrar a pasta 'certs'
+CERTS_DIR = BASE_DIR.parent / "certs"
+
 CERTS = {
-    "client_cert": str(BASE_DIR / "certs/cert.crt"),
-    "client_key": str(BASE_DIR / "certs/cert.key")
+    "client_cert": str(CERTS_DIR / "cert.crt"),
+    "client_key": str(CERTS_DIR / "cert.key")
 }
 print(f"Caminho do certificado: {CERTS['client_cert']}")
 
