@@ -1,66 +1,67 @@
 import requests
 import logging
 import base64
-import os
-from config.config import C6_API_URL, C6_AUTH_URL, C6_CREDENTIALS, CERTS
+from config.config import C6_API_URL, C6_AUTH_URL
 
 # Cache para token de acesso
-c6_access_token_cache = {"token": None}
+c6_access_token_cache = {}
 
-
-def get_c6_access_token():
-    """Obtém o token de acesso para a API do C6."""
+def get_c6_access_token(config):
+    """Obtém o token de acesso para a API do C6 usando a configuração especificada."""
     try:
+        if c6_access_token_cache.get(config["client_id"]):
+            return c6_access_token_cache[config["client_id"]]
+
         response = requests.post(
             C6_AUTH_URL,
-            data=C6_CREDENTIALS,
-            cert=(CERTS["client_cert"], CERTS["client_key"]),
-            verify=True  # Certifique-se de que verify esteja como True
+            data={
+                "client_id": config["client_id"],
+                "client_secret": config["client_secret"],
+                "grant_type": config["grant_type"]
+            },
+            cert=(config["cert"]["client_cert"], config["cert"]["client_key"]),
+            verify=True
         )
 
         if response.status_code == 200:
             token = response.json().get("access_token")
-            c6_access_token_cache["token"] = token
+            c6_access_token_cache[config["client_id"]] = token
             logging.info("Token de acesso do C6 obtido com sucesso.")
             return token
         else:
             logging.error(f"Erro ao obter token do C6: {response.text}")
-            logging.error(f"Status code: {response.status_code}") # Adicione para melhor debug
             raise Exception("Falha na autenticação do C6")
 
     except requests.exceptions.RequestException as e:
         logging.error(f"Erro na autenticação do C6: {e}")
         raise
 
-
-def send_to_c6(data):
+def send_to_c6(data, config):
     """Envia os dados para a API do C6 e gera o boleto."""
     try:
-        # Obtém ou renova o token
-        token = c6_access_token_cache.get("token") or get_c6_access_token()
+        token = get_c6_access_token(config)
 
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {token}"
         }
 
-        # Emite o boleto
         response = requests.post(
             C6_API_URL,
             json=data,
             headers=headers,
-            cert=(CERTS["client_cert"], CERTS["client_key"]),
-            verify=True  # Ajustar para True em produção
+            cert=(config["cert"]["client_cert"], config["cert"]["client_key"]),
+            verify=True
         )
 
         if response.status_code in [200, 201]:
             logging.info(f"Boleto gerado com sucesso: {response.json()}")
-            boleto_id = response.json().get("id")  # ID do boleto retornado
-            return consult_boleto(boleto_id, token)  # Consulta o boleto emitido
+            boleto_id = response.json().get("id")
+            return consult_boleto(boleto_id, config)  # Consulta o boleto emitido
         elif response.status_code == 401:
             logging.warning("Token expirado, renovando...")
-            c6_access_token_cache["token"] = None
-            return send_to_c6(data)
+            c6_access_token_cache.pop(config["client_id"], None)
+            return send_to_c6(data, config)
         else:
             logging.error(f"Erro na API do C6: {response.text}")
             raise Exception(f"Erro ao gerar boleto: {response.text}")
@@ -72,11 +73,12 @@ def send_to_c6(data):
         logging.error(f"Erro na requisição ao C6: {e}")
         raise
 
-
-def consult_boleto(boleto_id, token):
+def consult_boleto(boleto_id, config):
     """Consulta os detalhes de um boleto na API do C6."""
     try:
-        url = f"{C6_API_URL}/{boleto_id}"  # Endpoint para consultar boletos
+        token = get_c6_access_token(config)
+
+        url = f"{C6_API_URL}/{boleto_id}"
         headers = {
             "Authorization": f"Bearer {token}"
         }
@@ -84,14 +86,14 @@ def consult_boleto(boleto_id, token):
         response = requests.get(
             url,
             headers=headers,
-            cert=(CERTS["client_cert"], CERTS["client_key"]),
-            verify=True  # Ajustar para True em produção
+            cert=(config["cert"]["client_cert"], config["cert"]["client_key"]),
+            verify=True
         )
 
         if response.status_code == 200:
             boleto_data = response.json()
             logging.info(f"Boleto consultado com sucesso: {boleto_data}")
-            return boleto_data  # Retorna os detalhes do boleto
+            return boleto_data
         else:
             logging.error(f"Erro ao consultar boleto: {response.text}")
             raise Exception(f"Erro ao consultar boleto: {response.text}")

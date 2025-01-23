@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify, abort
 import logging
 from services.auth_c6_service import send_to_c6, decode_boleto_pdf, get_c6_access_token
-from services.auth_zoho_service import get_zoho_access_token, upload_attachment_to_zoho
+from services.auth_zoho_service import get_zoho_access_token, upload_attachment_to_zoho, remove_zoho_attachment
 import os
 import pathlib
 import requests
-from config.config import CERTS, ZOHO_API_URL # Adicione esta linha
+from config.config import FILIAIS, ZOHO_API_URL # Adicione esta linha
 
 app = Flask(__name__)
 
@@ -19,6 +19,12 @@ logging.basicConfig(
     ]
 )
 
+def get_config(filial):
+    if filial in FILIAIS:
+        return FILIAIS[filial]
+    else:
+        raise ValueError("Filial inválida especificada.")
+
 @app.route('/zoho-webhook', methods=['POST'])
 def receive_zoho_data():
     temp_dir = pathlib.Path("temp_files")
@@ -30,6 +36,19 @@ def receive_zoho_data():
             return jsonify({"error": "Invalid JSON"}), 400
 
         logging.info(f"Recebido JSON do Zoho: {data}")
+
+        # Nova lógica para extrair a filial
+        filial = data.get("filial", None)
+        if not filial:
+            return jsonify({"error": "Campo 'filial' é obrigatório."}), 400
+
+        # Obtenha as configurações baseadas na filial
+        try:
+            config = get_config(filial)
+        except ValueError as e:
+            logging.error(f"Erro de configuração da filial: {e}")
+            return jsonify({"error": str(e)}), 400
+
 
         # Validação e tratamento de dados do Zoho - MELHORADO
         try:
@@ -86,7 +105,7 @@ def receive_zoho_data():
             return jsonify({"error": f"Dados inválidos do Zoho: {e}"}), 400
 
         # Gera o boleto no C6 (inclui emissão e consulta)
-        boleto_response = send_to_c6(boleto_data)
+        boleto_response = send_to_c6(boleto_data, config)
 
         # Decodifica o PDF do boleto retornado
         pdf_base64 = boleto_response.get("base64_pdf_file")
@@ -117,6 +136,18 @@ def cancel_boleto():
         data = request.get_json()
         logging.info(f"Dados recebidos: {data}")
 
+        # Pega a informação da filial
+        filial = data.get("filial", None)
+        if not filial:
+            return jsonify({"error": "Campo 'filial' é obrigatório."}), 400
+
+        # Obtenha as configurações baseadas na filial
+        try:
+            config = get_config(filial)
+        except ValueError as e:
+            logging.error(f"Erro de configuração da filial: {e}")
+            return jsonify({"error": str(e)}), 400
+
         # Validação dos campos obrigatórios
         required_fields = ["boleto_id", "invoice_id", "document_idBooks"]
         for field in required_fields:
@@ -130,14 +161,14 @@ def cancel_boleto():
         logging.info(f"Boleto ID: {boleto_id}, Invoice ID: {invoice_id}, Document ID Books: {document_id_books}")
 
         # Consultar o boleto antes de tentar cancelar
-        boleto_status = get_boleto_status(boleto_id)
+        boleto_status = get_boleto_status(boleto_id, config)
         logging.info(f"Status do boleto: {boleto_status}")
 
         if boleto_status == "CANCELLED":
             return jsonify({"message": "Boleto já cancelado."}), 200
 
         # Cancelar o boleto
-        response = cancel_boleto_c6(boleto_id)
+        response = cancel_boleto_c6(boleto_id, config)
         response.raise_for_status()
 
         # Remover o anexo do Zoho (substitua pelo seu código)
@@ -160,8 +191,8 @@ def cancel_boleto():
         abort(500, f"Erro inesperado: {e}")
 
 
-def cancel_boleto_c6(boleto_id):
-    token = get_c6_access_token()
+def cancel_boleto_c6(boleto_id, config):
+    token = get_c6_access_token(config)
     if not token:
         raise Exception("Falha ao obter token de acesso do C6 Bank.")
 
@@ -170,19 +201,19 @@ def cancel_boleto_c6(boleto_id):
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
     }
-    response = requests.put(url, headers=headers, cert=(CERTS["client_cert"], CERTS["client_key"]), verify=True)
-    response.raise_for_status() # Verifica o código de status aqui
-    return response # Retorna a resposta, mesmo que seja 204
+    response = requests.put(url, headers=headers, cert=(config["cert"]["client_cert"], config["cert"]["client_key"]), verify=True)
+    response.raise_for_status()
+    return response
 
 
-def get_boleto_status(boleto_id):
+def get_boleto_status(boleto_id, config):
     try:
-        response = consult_boleto_c6(boleto_id)
+        response = consult_boleto_c6(boleto_id, config)
         response.raise_for_status()
         return response.json().get("status")
     except requests.exceptions.HTTPError as e:
         logging.exception(f"Erro ao consultar status do boleto: {e}")
-        raise  # Re-lance a exceção para ser tratada na função cancel_boleto
+        raise
     except requests.exceptions.RequestException as e:
         logging.exception(f"Erro de rede ao consultar status do boleto: {e}")
         raise
@@ -191,8 +222,8 @@ def get_boleto_status(boleto_id):
         raise
 
 
-def consult_boleto_c6(boleto_id):
-    token = get_c6_access_token()
+def consult_boleto_c6(boleto_id, config):
+    token = get_c6_access_token(config)
     if not token:
         raise Exception("Falha ao obter token de acesso do C6 Bank.")
 
@@ -200,20 +231,66 @@ def consult_boleto_c6(boleto_id):
     headers = {
         "Authorization": f"Bearer {token}"
     }
-    response = requests.get(url, headers=headers, cert=(CERTS["client_cert"], CERTS["client_key"]), verify=True)
+    response = requests.get(url, headers=headers, cert=(config["cert"]["client_cert"], config["cert"]["client_key"]), verify=True)
     return response
 
 
-def remove_zoho_attachment(invoice_id, document_id_books):
-    # Substitua este comentário pelo seu código para remover o anexo do Zoho
-    zoho_access_token = get_zoho_access_token()
-    url_zoho = f"{ZOHO_API_URL}/invoices/{invoice_id}/documents/{document_id_books}"
-    headers_zoho = {
-        "Authorization": f"Zoho-oauthtoken {zoho_access_token}"
+@app.route('/consultar-boleto', methods=['POST'])
+def consultar_boleto():
+    try:
+        data = request.get_json()
+        logging.info(f"Dados recebidos para consulta: {data}")
+
+        # Validação dos campos obrigatórios
+        required_fields = ["boleto_id", "filial"]
+        for field in required_fields:
+            if field not in data or not data[field]:
+                return jsonify({"error": f"O campo '{field}' é obrigatório."}), 400
+
+        boleto_id = data["boleto_id"]
+        filial = data["filial"]
+        logging.info(f"Boleto ID: {boleto_id}, Filial: {filial}")
+
+        # Obtenha as configurações baseadas na filial
+        try:
+            config = get_config(filial)
+        except ValueError as e:
+            logging.error(f"Erro de configuração da filial: {e}")
+            return jsonify({"error": str(e)}), 400
+
+        # Consultar o boleto
+        response = consult_boleto_c6(boleto_id, config)
+        response.raise_for_status()  # Verifica se houve erro na consulta ao C6
+        boleto_details = response.json()  # Parseia a resposta como JSON
+
+        logging.info(f"Detalhes do boleto: {boleto_details}")
+
+        # Retorna os detalhes do boleto
+        return jsonify(boleto_details), 200
+
+    except requests.exceptions.HTTPError as e:
+        logging.exception(f"Erro HTTP ao consultar boleto: {e}")
+        abort(e.response.status_code, f"Erro HTTP ao consultar boleto: {e}")
+    except requests.exceptions.RequestException as e:
+        logging.exception(f"Erro de rede ao consultar boleto: {e}")
+        abort(500, f"Erro de rede ao consultar boleto: {e}")
+    except Exception as e:
+        logging.exception(f"Erro inesperado ao consultar boleto: {e}")
+        abort(500, f"Erro inesperado ao consultar boleto: {e}")
+
+def consult_boleto_c6(boleto_id, config):
+    token = get_c6_access_token(config)
+    if not token:
+        raise Exception("Falha ao obter token de acesso do C6 Bank.")
+
+    url = f"https://baas-api-sandbox.c6bank.info/v1/bank_slips/{boleto_id}"
+    headers = {
+        "Authorization": f"Bearer {token}"
     }
-    response_zoho = requests.delete(url_zoho, headers=headers_zoho)
-    response_zoho.raise_for_status()
-    logging.info(f"Anexo {document_id_books} removido da invoice {invoice_id} com sucesso.")
+    response = requests.get(url, headers=headers, cert=(config["cert"]["client_cert"], config["cert"]["client_key"]), verify=True)
+    return response
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

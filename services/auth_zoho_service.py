@@ -76,3 +76,26 @@ def upload_attachment_to_zoho(invoice_id, file_path, access_token, boleto_id):
         raise Exception(f"Falha ao atualizar invoice: {update_response.text}")
 
     logging.info(f"Invoice {invoice_id} atualizada com boleto_id: {boleto_id}")
+
+def remove_zoho_attachment(invoice_id, document_id_books):
+    """Remove um anexo de Zoho Books."""
+    try:
+        zoho_access_token = get_zoho_access_token()
+        url_zoho = f"{ZOHO_API_URL}/invoices/{invoice_id}/documents/{document_id_books}"
+        headers_zoho = {
+            "Authorization": f"Zoho-oauthtoken {zoho_access_token}"
+        }
+        
+        response_zoho = requests.delete(url_zoho, headers=headers_zoho)
+        
+        if response_zoho.status_code == 200:
+            logging.info(f"Anexo {document_id_books} removido da invoice {invoice_id} com sucesso.")
+        else:
+            logging.error(f"Erro ao remover anexo: {response_zoho.text}")
+            raise Exception(f"Erro ao remover anexo: {response_zoho.text}")
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Erro na requisição para remover anexo do Zoho: {e}")
+        raise
+    except Exception as e:
+        logging.exception("Erro inesperado ao remover anexo do Zoho.")
+        raise

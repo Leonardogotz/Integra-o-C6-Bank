@@ -651,3 +651,386 @@ requests.exceptions.HTTPError: 404 Client Error:  for url: https://www.zohoapis.
 2025-01-22 18:56:43,426 [INFO] Token de acesso da Zoho ainda é válido.
 2025-01-22 18:56:44,467 [INFO] Anexo 5950246000000128005 removido da invoice 5950246000000118210 com sucesso.
 2025-01-22 18:56:44,467 [INFO] 127.0.0.1 - - [22/Jan/2025 18:56:44] "POST /cancel-boleto HTTP/1.1" 200 -
+2025-01-23 15:32:56,310 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 15:32:56,311 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 15:32:56,314 [INFO]  * Restarting with stat
+2025-01-23 19:25:56,826 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 19:25:56,828 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 19:25:56,832 [INFO]  * Restarting with stat
+2025-01-23 19:25:59,691 [WARNING]  * Debugger is active!
+2025-01-23 19:25:59,701 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 19:29:42,659 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 19:29:42,660 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 19:29:42,663 [INFO]  * Restarting with stat
+2025-01-23 19:29:45,490 [WARNING]  * Debugger is active!
+2025-01-23 19:29:45,500 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 19:40:53,260 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 19:40:53,269 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+2025-01-23 19:40:53,334 [INFO] 127.0.0.1 - - [23/Jan/2025 19:40:53] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 19:41:58,702 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 19:41:58,703 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 19:41:58,706 [INFO]  * Restarting with stat
+2025-01-23 19:42:01,228 [WARNING]  * Debugger is active!
+2025-01-23 19:42:01,237 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 19:42:03,561 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 19:42:03,568 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+2025-01-23 19:42:03,574 [INFO] 127.0.0.1 - - [23/Jan/2025 19:42:03] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 19:48:55,023 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 19:48:55,023 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 19:48:55,026 [INFO]  * Restarting with stat
+2025-01-23 19:48:57,298 [WARNING]  * Debugger is active!
+2025-01-23 19:48:57,307 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 19:49:03,966 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 19:49:03,973 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+2025-01-23 19:49:03,980 [INFO] 127.0.0.1 - - [23/Jan/2025 19:49:03] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 19:49:47,652 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 19:49:47,653 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 19:49:47,657 [INFO]  * Restarting with stat
+2025-01-23 19:49:50,077 [WARNING]  * Debugger is active!
+2025-01-23 19:49:50,086 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 19:49:53,694 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 19:49:53,702 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+2025-01-23 19:49:53,709 [INFO] 127.0.0.1 - - [23/Jan/2025 19:49:53] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 19:55:43,144 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 19:55:43,147 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 19:55:43,150 [INFO]  * Restarting with stat
+2025-01-23 19:55:45,622 [WARNING]  * Debugger is active!
+2025-01-23 19:55:45,633 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 19:55:48,188 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 19:55:48,198 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\config\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\config\certs\certInteligente.crt
+2025-01-23 19:55:48,205 [INFO] 127.0.0.1 - - [23/Jan/2025 19:55:48] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 19:56:43,444 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 19:56:43,446 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 19:56:43,449 [INFO]  * Restarting with stat
+2025-01-23 19:56:45,857 [WARNING]  * Debugger is active!
+2025-01-23 19:56:45,865 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 19:56:52,599 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 19:56:52,607 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\config\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\config\certs\certInteligente.crt
+2025-01-23 19:56:52,615 [INFO] 127.0.0.1 - - [23/Jan/2025 19:56:52] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 19:59:28,721 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 19:59:28,722 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 19:59:28,724 [INFO]  * Restarting with stat
+2025-01-23 19:59:31,240 [WARNING]  * Debugger is active!
+2025-01-23 19:59:31,249 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 19:59:37,322 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 19:59:37,330 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+2025-01-23 19:59:37,337 [INFO] 127.0.0.1 - - [23/Jan/2025 19:59:37] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 20:00:28,877 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 20:00:28,878 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 20:00:28,880 [INFO]  * Restarting with stat
+2025-01-23 20:00:31,374 [WARNING]  * Debugger is active!
+2025-01-23 20:00:31,384 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 20:00:37,211 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 20:00:37,220 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+2025-01-23 20:00:37,225 [INFO] 127.0.0.1 - - [23/Jan/2025 20:00:37] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 20:03:44,342 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 20:03:44,343 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 20:03:44,347 [INFO]  * Restarting with stat
+2025-01-23 20:03:47,178 [WARNING]  * Debugger is active!
+2025-01-23 20:03:47,192 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 20:03:47,859 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 20:05:43,513 [ERROR] Erro no processamento: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 42, in send_to_c6
+    token = get_c6_access_token(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 15, in get_c6_access_token
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 639, in send
+    self.cert_verify(conn, request.url, verify, cert)
+  File "C:\Users\leonardo\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 350, in cert_verify
+    raise OSError(
+OSError: Could not find the TLS certificate file, invalid path: C:\Users\leonardo\Desktop\IntegraçãoC6Bank\certs\certInteligente.crt
+2025-01-23 20:05:43,524 [INFO] 127.0.0.1 - - [23/Jan/2025 20:05:43] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 20:08:48,173 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV-004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332-480'}}}
+2025-01-23 20:08:53,826 [INFO] Token de acesso do C6 obtido com sucesso.
+2025-01-23 20:08:54,195 [ERROR] Erro na API do C6: {"type":"https://developers.c6bank.com.br/v1/error/invalid_request","title":"Requisição inválida.","status":400,"detail":"[Path '/external_reference_id'] ECMA 262 regex \\\"^[a-zA-Z0-9]{1,10}$\\\" does not match input string \\\"INV-004698\\\": [], [Path '/payer/address/zip_code'] String \\\"88332-480\\\" is too long (length: 9, maximum allowed: 8): [], [Path '/payer/address/zip_code'] ECMA 262 regex \\\"\\\\d{8}\\\" does not match input string \\\"88332-480\\\": []]\\\" Bad Request","correlation_id":"906b72c44465f190-GRU","timestamp":"2025-01-23T23:08:53.934Z"}
+2025-01-23 20:08:54,197 [ERROR] Erro no processamento: Erro ao gerar boleto: {"type":"https://developers.c6bank.com.br/v1/error/invalid_request","title":"Requisição inválida.","status":400,"detail":"[Path '/external_reference_id'] ECMA 262 regex \\\"^[a-zA-Z0-9]{1,10}$\\\" does not match input string \\\"INV-004698\\\": [], [Path '/payer/address/zip_code'] String \\\"88332-480\\\" is too long (length: 9, maximum allowed: 8): [], [Path '/payer/address/zip_code'] ECMA 262 regex \\\"\\\\d{8}\\\" does not match input string \\\"88332-480\\\": []]\\\" Bad Request","correlation_id":"906b72c44465f190-GRU","timestamp":"2025-01-23T23:08:53.934Z"}
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 108, in receive_zoho_data
+    boleto_response = send_to_c6(boleto_data, config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\services\auth_c6_service.py", line 67, in send_to_c6
+    raise Exception(f"Erro ao gerar boleto: {response.text}")
+Exception: Erro ao gerar boleto: {"type":"https://developers.c6bank.com.br/v1/error/invalid_request","title":"Requisição inválida.","status":400,"detail":"[Path '/external_reference_id'] ECMA 262 regex \\\"^[a-zA-Z0-9]{1,10}$\\\" does not match input string \\\"INV-004698\\\": [], [Path '/payer/address/zip_code'] String \\\"88332-480\\\" is too long (length: 9, maximum allowed: 8): [], [Path '/payer/address/zip_code'] ECMA 262 regex \\\"\\\\d{8}\\\" does not match input string \\\"88332-480\\\": []]\\\" Bad Request","correlation_id":"906b72c44465f190-GRU","timestamp":"2025-01-23T23:08:53.934Z"}
+2025-01-23 20:08:54,202 [INFO] 127.0.0.1 - - [23/Jan/2025 20:08:54] "[35m[1mPOST /zoho-webhook HTTP/1.1[0m" 500 -
+2025-01-23 20:11:31,932 [INFO] Recebido JSON do Zoho: {'external_reference_id': 'INV004698', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'amount': '10.0', 'due_date': '2025-01-23', 'instructions': '', 'payer': {'name': 'leonardo', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'Mario manoel rodrigues', 'number': '310', 'complement': '', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332480'}}}
+2025-01-23 20:11:36,059 [INFO] Boleto gerado com sucesso: {'amount': 10, 'due_date': '2025-01-23', 'originator_id': '000002330865', 'internal_id': '0009801243', 'billing_scheme': '21', 'billing_type': '3', 'id': '01JJAPYVN49N43GAG0XP7BSGNT', 'bar_code': '33691997000000010000000023308650009801243213', 'digitable_line': '33690.00009   23308.650003   98012.432138   1   99700000001000'}
+2025-01-23 20:11:37,769 [INFO] Boleto consultado com sucesso: {'amount': 10, 'due_date': '2025-01-23', 'originator_id': '000002330865', 'internal_id': '9801243', 'billing_scheme': '21', 'billing_type': '3', 'id': '01JJAPYVN49N43GAG0XP7BSGNT', 'external_reference_id': 'INV004698', 'status': 'CREATED', 'emission_date': '2025-01-23', 'instructions': [], 'digitable_line': '33690.00009   23308.650003   98012.432138   1   99700000001000', 'bar_code': '33691997000000010000000023308650009801243213', 'payer': {'name': 'LEONARDO', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'MARIO MANOEL RODRIGUES', 'number': 310, 'complement': 'Sem complemento', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332480'}}, 'base64_pdf_file': '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5oegWQ00Q6GfjCKBwyTYKJL9vOko0v8A5kmnMwplbmRzdHJlYW0KZW5kb2JqCjEgMCBvYmoKPDwvVGFicy9TL0dyb3VwPDwvUy9UcmFuc3BhcmVuY3kvVHlwZS9Hcm91cC9DUy9EZXZpY2VSR0I+Pi9Db250ZW50cyA4IDAgUi9UeXBlL1BhZ2UvUmVzb3VyY2VzPDwvQ29sb3JTcGFjZTw8L0NTL0RldmljZVJHQj4+L1Byb2NTZXQgWy9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUldL0ZvbnQ8PC9GMSAyIDAgUj4+L1hPYmplY3Q8PC9YZjEgNSAwIFIvWGYyIDcgMCBSL2ltZzIgNiAwIFIvaW1nMSA0IDAgUi9pbWcwIDMgMCBSPj4+Pi9QYXJlbnQgOSAwIFIvTWVkaWFCb3hbMCAwIDU5NSA4NDJdPj4KZW5kb2JqCjEwIDAgb2JqClsxIDAgUi9YWVogMCA4NTIgMF0KZW5kb2JqCjIgMCBvYmoKPDwvU3VidHlwZS9UeXBlMS9UeXBlL0ZvbnQvQmFzZUZvbnQvSGVsdmV0aWNhL0VuY29kaW5nL1dpbkFuc2lFbmNvZGluZz4+CmVuZG9iago5IDAgb2JqCjw8L0tpZHNbMSAwIFJdL1R5cGUvUGFnZXMvQ291bnQgMS9JVFhUKDIuMS43KT4+CmVuZG9iagoxMSAwIG9iago8PC9OYW1lc1soSlJfUEFHRV9BTkNIT1JfMF8xKSAxMCAwIFJdPj4KZW5kb2JqCjEyIDAgb2JqCjw8L0Rlc3RzIDExIDAgUj4+CmVuZG9iagoxMyAwIG9iago8PC9OYW1lcyAxMiAwIFIvVHlwZS9DYXRhbG9nL1BhZ2VzIDkgMCBSL1ZpZXdlclByZWZlcmVuY2VzPDwvUHJpbnRTY2FsaW5nL0FwcERlZmF1bHQ+Pj4+CmVuZG9iagoxNCAwIG9iago8PC9Nb2REYXRlKEQ6MjAyNTAxMjMyMDExMzUtMDMnMDAnKS9DcmVhdG9yKEphc3BlclJlcG9ydHMgTGlicmFyeSB2ZXJzaW9uIDYuNC4wKS9DcmVhdGlvbkRhdGUoRDoyMDI1MDEyMzIwMTEzNS0wMycwMCcpL1Byb2R1Y2VyKGlUZXh0IDIuMS43IGJ5IDFUM1hUKT4+CmVuZG9iagp4cmVmCjAgMTUKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDExNzQ2IDAwMDAwIG4gCjAwMDAwMTIwODggMDAwMDAgbiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAxMzc0IDAwMDAwIG4gCjAwMDAwMDMwMTcgMDAwMDAgbiAKMDAwMDAwNTc5MiAwMDAwMCBuIAowMDAwMDA2NzQ2IDAwMDAwIG4gCjAwMDAwMDk1MjEgMDAwMDAgbiAKMDAwMDAxMjE3NiAwMDAwMCBuIAowMDAwMDEyMDUyIDAwMDAwIG4gCjAwMDAwMTIyMzkgMDAwMDAgbiAKMDAwMDAxMjI5NSAwMDAwMCBuIAowMDAwMDEyMzI5IDAwMDAwIG4gCjAwMDAwMTI0MzQgMDAwMDAgbiAKdHJhaWxlcgo8PC9JbmZvIDE0IDAgUi9JRCBbPDk1MzBlNWI2ZDhjZDJlNWI1ZmI5MzYxODE0MTlkODdiPjw4ZWZiY2NlZTNlN2MyMzk4YmE0N2VhZmIzNjA4YWM4OD5dL1Jvb3QgMTMgMCBSL1NpemUgMTU+PgpzdGFydHhyZWYKMTI2MDIKJSVFT0YK'}
+2025-01-23 20:11:37,783 [INFO] PDF do boleto salvo em temp_files\01JJAPYVN49N43GAG0XP7BSGNT.pdf.
+2025-01-23 20:11:37,784 [INFO] Solicitando novo token de acesso à Zoho...
+2025-01-23 20:11:38,383 [INFO] Novo token Zoho armazenado com sucesso.
+2025-01-23 20:11:39,606 [INFO] PDF anexado com sucesso à fatura 2350263000024099040.
+2025-01-23 20:11:41,338 [INFO] Invoice 2350263000024099040 atualizada com boleto_id: 01JJAPYVN49N43GAG0XP7BSGNT
+2025-01-23 20:11:41,339 [INFO] 127.0.0.1 - - [23/Jan/2025 20:11:41] "POST /zoho-webhook HTTP/1.1" 200 -
+2025-01-23 20:18:09,891 [INFO] Dados recebidos: {'boleto_id': '01JJAPYVN49N43GAG0XP7BSGNT', 'filial': 'Inteligente TI', 'invoice_id': '2350263000024099040', 'document_idBooks': '2350263000024114005'}
+2025-01-23 20:18:09,892 [INFO] Boleto ID: 01JJAPYVN49N43GAG0XP7BSGNT, Invoice ID: 2350263000024099040, Document ID Books: 2350263000024114005
+2025-01-23 20:18:12,286 [INFO] Status do boleto: CREATED
+2025-01-23 20:18:14,177 [INFO] Token de acesso da Zoho ainda é válido.
+2025-01-23 20:18:14,914 [INFO] Anexo 2350263000024114005 removido da invoice 2350263000024099040 com sucesso.
+2025-01-23 20:18:14,915 [INFO] 127.0.0.1 - - [23/Jan/2025 20:18:14] "POST /cancel-boleto HTTP/1.1" 200 -
