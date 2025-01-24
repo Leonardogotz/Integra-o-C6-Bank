@@ -1034,3 +1034,69 @@ Exception: Erro ao gerar boleto: {"type":"https://developers.c6bank.com.br/v1/er
 2025-01-23 20:18:14,177 [INFO] Token de acesso da Zoho ainda é válido.
 2025-01-23 20:18:14,914 [INFO] Anexo 2350263000024114005 removido da invoice 2350263000024099040 com sucesso.
 2025-01-23 20:18:14,915 [INFO] 127.0.0.1 - - [23/Jan/2025 20:18:14] "POST /cancel-boleto HTTP/1.1" 200 -
+2025-01-23 21:28:03,298 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.8.0.3:5000
+2025-01-23 21:28:03,300 [INFO] [33mPress CTRL+C to quit[0m
+2025-01-23 21:28:03,306 [INFO]  * Restarting with stat
+2025-01-23 21:28:06,283 [WARNING]  * Debugger is active!
+2025-01-23 21:28:06,305 [INFO]  * Debugger PIN: 910-326-987
+2025-01-23 21:28:07,997 [ERROR] Erro inesperado ao consultar boleto: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 241, in consultar_boleto
+    data = request.get_json()
+           ^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\werkzeug\wrappers\request.py", line 604, in get_json
+    return self.on_json_loading_failed(None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\werkzeug\wrappers\request.py", line 647, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2025-01-23 21:28:08,067 [INFO] 127.0.0.1 - - [23/Jan/2025 21:28:08] "[35m[1mPOST /consultar-boleto HTTP/1.1[0m" 500 -
+2025-01-23 21:30:05,663 [ERROR] Erro inesperado ao consultar boleto: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 241, in consultar_boleto
+    data = request.get_json()
+           ^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\werkzeug\wrappers\request.py", line 604, in get_json
+    return self.on_json_loading_failed(None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\werkzeug\wrappers\request.py", line 647, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2025-01-23 21:30:05,667 [INFO] 127.0.0.1 - - [23/Jan/2025 21:30:05] "[35m[1mPOST /consultar-boleto HTTP/1.1[0m" 500 -
+2025-01-23 21:31:18,746 [ERROR] Erro inesperado ao consultar boleto: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Traceback (most recent call last):
+  File "C:\Users\leonardo\Desktop\IntegraçãoC6Bank\app.py", line 241, in consultar_boleto
+    data = request.get_json()
+           ^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\werkzeug\wrappers\request.py", line 604, in get_json
+    return self.on_json_loading_failed(None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Python312\Lib\site-packages\werkzeug\wrappers\request.py", line 647, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2025-01-23 21:31:18,749 [INFO] 127.0.0.1 - - [23/Jan/2025 21:31:18] "[35m[1mPOST /consultar-boleto HTTP/1.1[0m" 500 -
+2025-01-23 21:32:40,227 [INFO] Dados recebidos para consulta: {'filial': 'Inteligente TI', 'boleto_id': '01JJAPYVN49N43GAG0XP7BSGNT'}
+2025-01-23 21:32:40,228 [INFO] Boleto ID: 01JJAPYVN49N43GAG0XP7BSGNT, Filial: Inteligente TI
+2025-01-23 21:32:59,629 [INFO] Token de acesso do C6 obtido com sucesso.
+2025-01-23 21:33:01,627 [INFO] Detalhes do boleto: {'amount': 10, 'due_date': '2025-01-23', 'originator_id': '000002330865', 'internal_id': '9801243', 'billing_scheme': '21', 'billing_type': '3', 'id': '01JJAPYVN49N43GAG0XP7BSGNT', 'external_reference_id': 'INV004698', 'status': 'CANCELLED', 'emission_date': '2025-01-23', 'instructions': [], 'digitable_line': '33690.00009   23308.650003   98012.432138   1   99700000001000', 'bar_code': '33691997000000010000000023308650009801243213', 'payer': {'name': 'LEONARDO', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'MARIO MANOEL RODRIGUES', 'number': 310, 'complement': 'Sem complemento', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332480'}}}
+2025-01-23 21:33:01,630 [INFO] 127.0.0.1 - - [23/Jan/2025 21:33:01] "POST /consultar-boleto HTTP/1.1" 200 -
+2025-01-23 21:36:58,490 [INFO] Dados recebidos para consulta: {'filial': 'Inteligente TI', 'boleto_id': '01JJAPYVN49N43GAG0XP7BSGNT'}
+2025-01-23 21:36:58,491 [INFO] Boleto ID: 01JJAPYVN49N43GAG0XP7BSGNT, Filial: Inteligente TI
+2025-01-23 21:36:59,646 [INFO] Detalhes do boleto: {'amount': 10, 'due_date': '2025-01-23', 'originator_id': '000002330865', 'internal_id': '9801243', 'billing_scheme': '21', 'billing_type': '3', 'id': '01JJAPYVN49N43GAG0XP7BSGNT', 'external_reference_id': 'INV004698', 'status': 'CANCELLED', 'emission_date': '2025-01-23', 'instructions': [], 'digitable_line': '33690.00009   23308.650003   98012.432138   1   99700000001000', 'bar_code': '33691997000000010000000023308650009801243213', 'payer': {'name': 'LEONARDO', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'MARIO MANOEL RODRIGUES', 'number': 310, 'complement': 'Sem complemento', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332480'}}}
+2025-01-23 21:36:59,647 [INFO] 127.0.0.1 - - [23/Jan/2025 21:36:59] "POST /consultar-boleto HTTP/1.1" 200 -
+2025-01-23 21:41:45,587 [INFO] Dados recebidos para consulta: {'filial': 'Inteligente TI', 'boleto_id': '01JJAPYVN49N43GAG0XP7BSGNT'}
+2025-01-23 21:41:45,588 [INFO] Boleto ID: 01JJAPYVN49N43GAG0XP7BSGNT, Filial: Inteligente TI
+2025-01-23 21:41:47,620 [INFO] Detalhes do boleto: {'amount': 10, 'due_date': '2025-01-23', 'originator_id': '000002330865', 'internal_id': '9801243', 'billing_scheme': '21', 'billing_type': '3', 'id': '01JJAPYVN49N43GAG0XP7BSGNT', 'external_reference_id': 'INV004698', 'status': 'CANCELLED', 'emission_date': '2025-01-23', 'instructions': [], 'digitable_line': '33690.00009   23308.650003   98012.432138   1   99700000001000', 'bar_code': '33691997000000010000000023308650009801243213', 'payer': {'name': 'LEONARDO', 'tax_id': '03845768002', 'email': 'leonardogotz@gmail.com', 'address': {'street': 'MARIO MANOEL RODRIGUES', 'number': 310, 'complement': 'Sem complemento', 'city': 'BALNEÁRIO CAMBORIU', 'state': 'SC', 'zip_code': '88332480'}}}
+2025-01-23 21:41:47,622 [INFO] 127.0.0.1 - - [23/Jan/2025 21:41:47] "POST /consultar-boleto HTTP/1.1" 200 -
