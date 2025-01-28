@@ -196,7 +196,7 @@ def cancel_boleto_c6(boleto_id, config):
     if not token:
         raise Exception("Falha ao obter token de acesso do C6 Bank.")
 
-    url = f"https://baas-api-sandbox.c6bank.info/v1/bank_slips/{boleto_id}/cancel"
+    url = f"https://baas-api.c6bank.info/v1/bank_slips/{boleto_id}/cancel"
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
@@ -227,7 +227,7 @@ def consult_boleto_c6(boleto_id, config):
     if not token:
         raise Exception("Falha ao obter token de acesso do C6 Bank.")
 
-    url = f"https://baas-api-sandbox.c6bank.info/v1/bank_slips/{boleto_id}"
+    url = f"https://baas-api.c6bank.info/v1/bank_slips/{boleto_id}"
     headers = {
         "Authorization": f"Bearer {token}"
     }
@@ -283,7 +283,7 @@ def consult_boleto_c6(boleto_id, config):
     if not token:
         raise Exception("Falha ao obter token de acesso do C6 Bank.")
 
-    url = f"https://baas-api-sandbox.c6bank.info/v1/bank_slips/{boleto_id}"
+    url = f"https://baas-api.c6bank.info/v1/bank_slips/{boleto_id}"
     headers = {
         "Authorization": f"Bearer {token}"
     }
