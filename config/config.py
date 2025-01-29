@@ -10,8 +10,8 @@ FILIAIS = {
     "Toolkit": {
        # "01ea9d70-e868-4964-8f66-695f98a06298"
         # "1ZM68PYLrWX2ISzmvx572IGQdeU2nqKJ"
-        "client_id": os.getenv("C6_CLIENT_ID_TOOLKIT", "6d651c51-5c59-4c2c-8e56-10bc19a4b298"),
-        "client_secret": os.getenv("C6_CLIENT_SECRET_TOOLKIT", "vw67M2S92fsWVAVgAkGgJmm6e9uzvzGd"),
+        "client_id": os.getenv("C6_CLIENT_ID_TOOLKIT", "01ea9d70-e868-4964-8f66-695f98a06298"),
+        "client_secret": os.getenv("C6_CLIENT_SECRET_TOOLKIT", "1ZM68PYLrWX2ISzmvx572IGQdeU2nqKJ"),
         "cert": {
             "client_cert": str(CERTS_DIR / "certToolKit.crt"),
             "client_key": str(CERTS_DIR / "certToolKit.key")
@@ -19,8 +19,9 @@ FILIAIS = {
         "grant_type": "client_credentials"
     },
     "Inteligente TI": {
-        "client_id": os.getenv("C6_CLIENT_ID_INTELIGENTETI", "01ea9d70-e868-4964-8f66-695f98a06298"),
-        "client_secret": os.getenv("C6_CLIENT_SECRET_INTELIGENTETI", "1ZM68PYLrWX2ISzmvx572IGQdeU2nqKJ"),
+        # 1ZM68PYLrWX2ISzmvx572IGQdeU2nqKJ
+        "client_id": os.getenv("C6_CLIENT_ID_INTELIGENTETI", "6d651c51-5c59-4c2c-8e56-19bc19a4b298"),
+        "client_secret": os.getenv("C6_CLIENT_SECRET_INTELIGENTETI", "vw67M2S92fsWVAVgAkGgJmm6e9uzvzGd"),
         "cert": {
             "client_cert": str(CERTS_DIR / "certInteligente.crt"),
             "client_key": str(CERTS_DIR / "certInteligente.key")
@@ -30,12 +31,12 @@ FILIAIS = {
 }
 
 # Configuração da API do C6 Sandbox
-C6_API_URL = "https://baas-api-sandbox.c6bank.info/v1/bank_slips/"
-C6_AUTH_URL = "https://baas-api-sandbox.c6bank.info/v1/auth/"
+# C6_API_URL = "https://baas-api-sandbox.c6bank.info/v1/bank_slips/"
+# C6_AUTH_URL = "https://baas-api-sandbox.c6bank.info/v1/auth/"
 
 # Configuração da API do C6
-# C6_API_URL = "https://baas-api.c6bank.info/v1/bank_slips/"
-# C6_AUTH_URL = "https://baas-api.c6bank.info/v1/auth/"
+C6_API_URL = "https://baas-api.c6bank.info/v1/bank_slips/"
+C6_AUTH_URL = "https://baas-api.c6bank.info/v1/auth/"
 
 # Configuração da API Zoho (única para todas as filiais)
 ZOHO_API_URL = "https://www.zohoapis.com/books/v3/"
