@@ -30,12 +30,12 @@ FILIAIS = {
 }
 
 # Configuração da API do C6 Sandbox
-# C6_API_URL = "https://baas-api-sandbox.c6bank.info/v1/bank_slips/"
-# C6_AUTH_URL = "https://baas-api-sandbox.c6bank.info/v1/auth/"
+C6_API_URL = "https://baas-api-sandbox.c6bank.info/v1/bank_slips/"
+C6_AUTH_URL = "https://baas-api-sandbox.c6bank.info/v1/auth/"
 
 # Configuração da API do C6
-C6_API_URL = "https://baas-api.c6bank.info/v1/bank_slips/"
-C6_AUTH_URL = "https://baas-api.c6bank.info/v1/auth/"
+# C6_API_URL = "https://baas-api.c6bank.info/v1/bank_slips/"
+# C6_AUTH_URL = "https://baas-api.c6bank.info/v1/auth/"
 
 # Configuração da API Zoho (única para todas as filiais)
 ZOHO_API_URL = "https://www.zohoapis.com/books/v3/"
