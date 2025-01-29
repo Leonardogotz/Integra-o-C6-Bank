@@ -10,8 +10,8 @@ FILIAIS = {
     "Toolkit": {
        # "01ea9d70-e868-4964-8f66-695f98a06298"
         # "1ZM68PYLrWX2ISzmvx572IGQdeU2nqKJ"
-        "client_id": os.getenv("C6_CLIENT_ID_TOOLKIT", "01ea9d70-e868-4964-8f66-695f98a06298"),
-        "client_secret": os.getenv("C6_CLIENT_SECRET_TOOLKIT", "1ZM68PYLrWX2ISzmvx572IGQdeU2nqKJ"),
+        "client_id": os.getenv("C6_CLIENT_ID_TOOLKIT", "6d651c51-5c59-4c2c-8e56-19bc19a4b298"),
+        "client_secret": os.getenv("C6_CLIENT_SECRET_TOOLKIT", "vw67M2S92fsWVAVgAkGgJmm6e9uzvzGd"),
         "cert": {
             "client_cert": str(CERTS_DIR / "certToolKit.crt"),
             "client_key": str(CERTS_DIR / "certToolKit.key")
@@ -20,8 +20,8 @@ FILIAIS = {
     },
     "Inteligente TI": {
         # 1ZM68PYLrWX2ISzmvx572IGQdeU2nqKJ
-        "client_id": os.getenv("C6_CLIENT_ID_INTELIGENTETI", "6d651c51-5c59-4c2c-8e56-19bc19a4b298"),
-        "client_secret": os.getenv("C6_CLIENT_SECRET_INTELIGENTETI", "vw67M2S92fsWVAVgAkGgJmm6e9uzvzGd"),
+        "client_id": os.getenv("C6_CLIENT_ID_INTELIGENTETI", "01ea9d70-e868-4964-8f66-695f98a06298"),
+        "client_secret": os.getenv("C6_CLIENT_SECRET_INTELIGENTETI", "1ZM68PYLrWX2ISzmvx572IGQdeU2nqKJ"),
         "cert": {
             "client_cert": str(CERTS_DIR / "certInteligente.crt"),
             "client_key": str(CERTS_DIR / "certInteligente.key")
