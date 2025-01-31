@@ -57,6 +57,16 @@ def receive_zoho_data():
                 "amount": float(data["amount"]),
                 "due_date": data["due_date"],
                 "instructions": [str(ins) for ins in data.get("instructions", [])], # Lista de strings
+                "interest": {
+                    "type": data["interest"]["type"],
+                    "value": data["interest"]["value"],
+                    "dead_line": data["interest"]["dead_line"],
+                },
+                "fine": {
+                    "type": data["fine"]["type"],
+                    "value": data["fine"]["value"],
+                    "dead_line": data["fine"]["dead_line"],
+                },
                 "payer": {
                     "name": data["payer"]["name"],
                     "tax_id": data["payer"]["tax_id"],
